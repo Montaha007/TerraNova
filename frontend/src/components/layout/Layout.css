@@ -1,0 +1,67 @@
+/* Layout Container */
+.layout-container {
+  min-height: 100vh;
+  background: #e8e8e8;
+  padding-top: 70px;
+}
+
+/* Main Content Area */
+.main-content {
+  min-height: calc(100vh - 70px);
+  padding: 20px;
+  background: #e8e8e8;
+  overflow-x: hidden;
+}
+
+/* Content Wrapper for better spacing */
+.content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 15px;
+  }
+
+  .content-wrapper {
+    padding: 0;
+  }
+}
+
+/* Smooth scroll behavior */
+.main-content {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for main content */
+.main-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #6b8d8d;
+  border-radius: 5px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: #5a7a7a;
+}

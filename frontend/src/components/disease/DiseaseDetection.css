@@ -1,0 +1,876 @@
+/* Disease Detection Page Styling */
+/* Color Palette:
+   - Primary dark: #0B1D1A (dark forest green)
+   - Light/Background: #D9D9D9 (light gray)
+   - Secondary/Accent: #7A8372 (muted teal/gray-blue)
+*/
+
+.disease-detection-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+}
+
+/* Header */
+.detection-header {
+  background: linear-gradient(135deg, #0B1D1A 0%, #1a3a2a 100%);
+  color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-icon {
+  font-size: 40px;
+  color: #7A8372;
+}
+
+.header-text h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Main Container */
+.detection-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Detection Grid (Before Scan) */
+.detection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Upload Card */
+.upload-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.upload-card h2 {
+  margin: 0 0 1.5rem 0;
+  color: #0B1D1A;
+  font-size: 1.5rem;
+}
+
+/* Image Preview */
+.image-preview-area {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #D9D9D9;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.preview-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.remove-image-btn:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}
+
+.preview-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7A8372;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  opacity: 0.3;
+  margin-bottom: 1rem;
+}
+
+/* Upload Progress */
+.upload-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #D9D9D9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7A8372 0%, #0B1D1A 100%);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  color: #7A8372;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Error Alert */
+.error-alert {
+  background: #fee;
+  border-left: 4px solid #dc3545;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #dc3545;
+}
+
+.error-alert svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.dismiss-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  padding: 0;
+}
+
+/* Field Selection */
+.field-selection {
+  margin-bottom: 1.5rem;
+}
+
+.field-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #0B1D1A;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.field-selection select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #D9D9D9;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #0B1D1A;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.field-selection select:focus {
+  outline: none;
+  border-color: #7A8372;
+  box-shadow: 0 0 0 3px rgba(122, 131, 114, 0.1);
+}
+
+.field-selection select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-camera {
+  background: linear-gradient(135deg, #7A8372 0%, #5a6a5f 100%);
+  color: white;
+}
+
+.btn-camera:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 131, 114, 0.3);
+}
+
+.btn-upload {
+  background: white;
+  color: #7A8372;
+  border: 2px solid #7A8372;
+}
+
+.btn-upload:hover:not(:disabled) {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.btn-analyze {
+  width: 100%;
+  background: linear-gradient(135deg, #0B1D1A 0%, #1a3a2a 100%);
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.btn-analyze:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(11, 29, 26, 0.3);
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #D9D9D9;
+  border-top-color: #7A8372;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  color: #0B1D1A;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.loading-subtext {
+  color: #7A8372;
+  font-size: 0.875rem;
+}
+
+/* Tips Section */
+.tips-section {
+  background: #f8f9fa;
+  border-left: 4px solid #7A8372;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tips-section h3 {
+  margin: 0 0 1rem 0;
+  color: #0B1D1A;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tips-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #6b705c;
+}
+
+.tips-section li {
+  margin-bottom: 0.5rem;
+}
+
+/* Recent Scans Card */
+.recent-scans-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #0B1D1A;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #7A8372;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+  margin-bottom: 1rem;
+}
+
+.empty-subtext {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Scan Item */
+.scan-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid #D9D9D9;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.scan-item:hover {
+  border-color: #7A8372;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.scan-image-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.scan-image-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scan-image-thumb svg {
+  font-size: 2rem;
+  color: #7A8372;
+  opacity: 0.5;
+}
+
+.scan-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.scan-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: #0B1D1A;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scan-field {
+  margin: 0 0 0.25rem 0;
+  color: #7A8372;
+  font-size: 0.875rem;
+}
+
+.scan-date {
+  margin: 0;
+  color: #999;
+  font-size: 0.75rem;
+}
+
+.scan-severity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.severity-badge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.confidence {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Results View */
+.results-view {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn-back {
+  background: white;
+  color: #7A8372;
+  border: 2px solid #7A8372;
+  margin-bottom: 2rem;
+}
+
+.btn-back:hover {
+  background: #f8f9fa;
+  transform: translateX(-4px);
+}
+
+/* Diagnosis Card */
+.diagnosis-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.diagnosis-card h2 {
+  margin: 0 0 1.5rem 0;
+  color: #0B1D1A;
+  font-size: 1.75rem;
+}
+
+.diagnosis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.scanned-image {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #D9D9D9;
+}
+
+.scanned-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detection-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.disease-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.disease-header h3 {
+  margin: 0;
+  color: #0B1D1A;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.severity-badge-large {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Confidence Section */
+.confidence-section {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.confidence-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.confidence-value {
+  font-weight: 700;
+  color: #0B1D1A;
+  font-size: 1rem;
+}
+
+.confidence-bar {
+  height: 12px;
+  background: #D9D9D9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7A8372 0%, #0B1D1A 100%);
+  transition: width 0.5s ease;
+}
+
+/* Impact Warning */
+.impact-warning {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.impact-warning svg {
+  color: #ffc107;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.impact-warning h4 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+  font-size: 1rem;
+}
+
+.impact-warning p {
+  margin: 0.25rem 0;
+  color: #856404;
+  font-size: 0.875rem;
+}
+
+/* Diseases Detected */
+.diseases-detected {
+  border: 2px solid #D9D9D9;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.diseases-detected h4 {
+  margin: 0 0 1rem 0;
+  color: #0B1D1A;
+  font-size: 1rem;
+}
+
+.disease-item {
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.disease-item:last-child {
+  margin-bottom: 0;
+}
+
+.disease-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.disease-name {
+  font-weight: 600;
+  color: #0B1D1A;
+  font-size: 0.875rem;
+}
+
+.disease-confidence {
+  color: #7A8372;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.disease-bbox-info {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* Action Buttons Result */
+.action-buttons-result {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background: white;
+  color: #7A8372;
+  border: 2px solid #7A8372;
+  flex: 1;
+}
+
+.btn-secondary:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+/* Healthy Result */
+.healthy-result {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.healthy-icon {
+  font-size: 5rem;
+  color: #28a745;
+  margin-bottom: 1.5rem;
+}
+
+.healthy-result h3 {
+  margin: 0 0 1rem 0;
+  color: #28a745;
+  font-size: 1.75rem;
+}
+
+.healthy-result p {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.healthy-tip {
+  color: #7A8372;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* Treatment Card */
+.treatment-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.treatment-card h2 {
+  margin: 0 0 1.5rem 0;
+  color: #0B1D1A;
+  font-size: 1.75rem;
+}
+
+.treatment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.treatment-section {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.treatment-section h3 {
+  margin: 0 0 1rem 0;
+  color: #0B1D1A;
+  font-size: 1.25rem;
+}
+
+.treatment-section p {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.treatment-steps {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #666;
+}
+
+.treatment-steps li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.prevention-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #666;
+}
+
+.prevention-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.recovery-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #d4edda;
+  border-radius: 8px;
+  color: #155724;
+}
+
+/* Coming Soon Card */
+.coming-soon-card {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.coming-soon-icon {
+  font-size: 3rem;
+  color: #7A8372;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #0B1D1A;
+}
+
+.coming-soon-card p {
+  margin: 0;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .detection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnosis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons-result {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .detection-container {
+    padding: 1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .upload-card,
+  .recent-scans-card,
+  .diagnosis-card,
+  .treatment-card {
+    padding: 1.5rem;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .disease-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .detection-header,
+  .btn-back,
+  .action-buttons-result,
+  .coming-soon-card {
+    display: none !important;
+  }
+
+  .diagnosis-card,
+  .treatment-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+}
