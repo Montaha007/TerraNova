@@ -12,6 +12,11 @@
   font-size: 80px;
   margin-bottom: 20px;
   animation: float 3s ease-in-out infinite;
+  color: #f4a261;
+}
+
+.empty-icon svg {
+  filter: drop-shadow(0 4px 8px rgba(244, 162, 97, 0.3));
 }
 
 @keyframes float {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { FaExclamationTriangle } from 'react-icons/fa';
 import './Auth.css';
 
 function Register() {
@@ -10,7 +11,8 @@ function Register() {
     password: '',
     password2: '',
     farm_name: '',
-    city: ''
+    city: '',
+    phone_number: ''
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -70,6 +72,10 @@ function Register() {
       setError('City is required');
       return false;
     }
+    if (formData.phone_number && formData.phone_number.length < 8) {
+      setError('Please enter a valid phone number');
+      return false;
+    }
     return true;
   };
 
@@ -96,7 +102,8 @@ function Register() {
           password: formData.password,
           password2: formData.password2,
           farm_name: formData.farm_name || 'My Farm',
-          city: formData.city
+          city: formData.city,
+          phone_number: formData.phone_number || ''
         })
       });
 
@@ -132,7 +139,7 @@ function Register() {
         <form onSubmit={handleSubmit} className="auth-form">
           {error && (
             <div className="error-message">
-              <i className="error-icon">⚠</i>
+              <FaExclamationTriangle className="error-icon" />
               {error}
             </div>
           )}
@@ -168,6 +175,23 @@ function Register() {
                 disabled={loading}
                 autoComplete="email"
               />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="phone_number">Phone Number (optional)</label>
+              <input
+                type="tel"
+                id="phone_number"
+                name="phone_number"
+                value={formData.phone_number}
+                onChange={handleChange}
+                placeholder="e.g., 20123456 or +21620123456"
+                disabled={loading}
+                autoComplete="tel"
+              />
+              <p className="form-helper-text">
+                Receive SMS alerts for disease detections
+              </p>
             </div>
 
             <div className="form-group">

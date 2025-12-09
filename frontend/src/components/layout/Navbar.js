@@ -34,7 +34,18 @@ function Navbar() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setActiveDropdown(null);
+    
+    // Keep dropdown open if current route belongs to that dropdown
+    const smartToolsRoutes = ['/disease-detection', '/iot-monitoring', '/ai-advisor'];
+    const managementRoutes = ['/inventory', '/marketplace', '/settings'];
+    
+    if (smartToolsRoutes.includes(location.pathname)) {
+      setActiveDropdown('smartTools');
+    } else if (managementRoutes.includes(location.pathname)) {
+      setActiveDropdown('management');
+    } else {
+      setActiveDropdown(null);
+    }
   }, [location.pathname]);
 
   const handleLogout = () => {
@@ -224,7 +235,7 @@ function Navbar() {
 
           {/* User Section */}
           <div className="navbar-user">
-            <div className="user-info">
+            <div className="user-info" onClick={() => navigate('/profile')}>
               <div className="user-avatar">
                 {user?.username?.charAt(0).toUpperCase() || 'U'}
               </div>

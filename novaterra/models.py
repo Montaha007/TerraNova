@@ -190,12 +190,12 @@ class Stock(geomodels.Model):
 
 
 # ============================================
-# CAMERA (Optional - for surveillance)
+# CAMERA (Surveillance cameras for novaterra app)
 # ============================================
 class Camera(geomodels.Model):
     """Surveillance cameras"""
-    owner = geomodels.ForeignKey(User, on_delete=geomodels.CASCADE, related_name='cameras')
-    location = geomodels.ForeignKey(Location, on_delete=geomodels.CASCADE, related_name='cameras')
+    owner = geomodels.ForeignKey(User, on_delete=geomodels.CASCADE, related_name='novaterra_cameras')
+    location = geomodels.ForeignKey(Location, on_delete=geomodels.CASCADE, related_name='novaterra_cameras')
     
     name = geomodels.CharField(max_length=100)
     stream_url = geomodels.URLField(blank=True)
@@ -203,5 +203,34 @@ class Camera(geomodels.Model):
     
     created_at = geomodels.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        verbose_name = "Novaterra Camera"
+        verbose_name_plural = "Novaterra Cameras"
+    
     def __str__(self):
         return f"{self.name} at {self.location.name}"
+    
+    # Streaming methods for go2rtc integration
+    def get_camera_id(self):
+        """Camera ID is the name"""
+        return self.name
+    
+    def get_stream_url(self):
+        """Get go2rtc web player URL"""
+        return f"http://localhost:1984/stream.html?src={self.get_camera_id()}"
+    
+    def get_go2rtc_url(self):
+        """Get go2rtc API URL"""
+        return f"http://localhost:1984/api/streams/{self.get_camera_id()}"
+    
+    def get_go2rtc_iframe_url(self):
+        """Get go2rtc iframe embed URL"""
+        return f"http://localhost:1984/streams/{self.get_camera_id()}"
+    
+    def get_hls_url(self):
+        """Get HLS stream URL for video.js"""
+        return f"http://localhost:1984/api/streams/{self.get_camera_id()}.m3u8"
+    
+    def get_webrtc_url(self):
+        """Get WebRTC stream URL"""
+        return f"http://localhost:1984/api/webrtc?src={self.get_camera_id()}"

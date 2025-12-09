@@ -425,85 +425,8 @@ function Main() {
               </div>
             </div>
 
-            {/* Field Status */}
-            <div className="field-status-card">
-              <div className="card-header">
-                <div className="card-header-left">
-                  <div className="card-icon-box card-icon-green">
-                    <Activity size={20} />
-                  </div>
-                  <h3>Real-time Field Status</h3>
-                </div>
-                <button className="view-all-btn" onClick={() => handleNavigate('iot-monitoring')}>
-                  View Details
-                </button>
-              </div>
-              <div className="field-list">
-                <div className="field-item field-warning">
-                  <div className="field-header">
-                    <div className="field-info">
-                      <div className="field-icon-box field-icon-orange">
-                        <Leaf size={20} />
-                      </div>
-                      <div>
-                        <span className="field-name">Field A</span>
-                        <span className="field-crop">Tomatoes</span>
-                      </div>
-                    </div>
-                    <span className="badge badge-warning">Attention</span>
-                  </div>
-                  <div className="field-metrics">
-                    <div className="metric-box">
-                      <Droplets size={20} className="metric-icon-orange" />
-                      <div className="metric-value">28%</div>
-                      <div className="metric-label">Moisture</div>
-                    </div>
-                    <div className="metric-box">
-                      <ThermometerSun size={20} className="metric-icon-green" />
-                      <div className="metric-value">26°C</div>
-                      <div className="metric-label">Temp</div>
-                    </div>
-                    <div className="metric-box">
-                      <Cloud size={20} className="metric-icon-green" />
-                      <div className="metric-value">62%</div>
-                      <div className="metric-label">Humidity</div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="field-item field-success">
-                  <div className="field-header">
-                    <div className="field-info">
-                      <div className="field-icon-box field-icon-green">
-                        <Leaf size={20} />
-                      </div>
-                      <div>
-                        <span className="field-name">Field B</span>
-                        <span className="field-crop">Olives</span>
-                      </div>
-                    </div>
-                    <span className="badge badge-success">Healthy</span>
-                  </div>
-                  <div className="field-metrics">
-                    <div className="metric-box">
-                      <Droplets size={20} className="metric-icon-green" />
-                      <div className="metric-value">52%</div>
-                      <div className="metric-label">Moisture</div>
-                    </div>
-                    <div className="metric-box">
-                      <ThermometerSun size={20} className="metric-icon-green" />
-                      <div className="metric-value">24°C</div>
-                      <div className="metric-label">Temp</div>
-                    </div>
-                    <div className="metric-box">
-                      <Cloud size={20} className="metric-icon-green" />
-                      <div className="metric-value">58%</div>
-                      <div className="metric-label">Humidity</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                
           </div>
 
 

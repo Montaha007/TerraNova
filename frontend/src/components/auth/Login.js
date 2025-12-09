@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { FaExclamationTriangle } from 'react-icons/fa';
 import './Auth.css';
 
 function Login() {
@@ -67,8 +68,8 @@ function Login() {
         localStorage.setItem('refresh_token', data.tokens.refresh);
         localStorage.setItem('user', JSON.stringify(data.user));
         
-        // Redirect to main dashboard
-        navigate('/main');
+        // Redirect to dashboard
+        navigate('/dashboard');
       } else {
         setError(data.error || 'Login failed. Please try again.');
       }
@@ -91,7 +92,7 @@ function Login() {
         <form onSubmit={handleSubmit} className="auth-form">
           {error && (
             <div className="error-message">
-              <i className="error-icon">⚠</i>
+              <FaExclamationTriangle className="error-icon" />
               {error}
             </div>
           )}

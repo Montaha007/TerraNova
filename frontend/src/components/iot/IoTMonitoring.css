@@ -1,0 +1,447 @@
+.iot-monitoring {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+  min-height: 100vh;
+}
+
+.iot-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.iot-header h1 {
+  color: #0a1e0a;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.iot-header p {
+  color: #344e41;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-range-selector {
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(88, 129, 87, 0.2);
+  border-radius: 12px;
+  background: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.time-range-selector:hover {
+  border-color: #588157;
+  box-shadow: 0 2px 8px rgba(88, 129, 87, 0.15);
+}
+
+/* Alerts Section */
+.alerts-section {
+  margin-bottom: 3rem;
+}
+
+.alerts-section h2 {
+  color: #0a1e0a;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.alert-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-left: 4px solid;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.alert-card.alert-high {
+  border-left-color: #e74c3c;
+  background: linear-gradient(135deg, #fff 0%, #fdf2f2 100%);
+}
+
+.alert-card.alert-medium {
+  border-left-color: #f39c12;
+  background: linear-gradient(135deg, #fff 0%, #fef9e7 100%);
+}
+
+.alert-card.alert-low {
+  border-left-color: #3498db;
+  background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.alert-warning {
+  color: #f39c12;
+  font-size: 1.2rem;
+}
+
+.alert-info {
+  color: #3498db;
+  font-size: 1.2rem;
+}
+
+.alert-time {
+  color: #95a5a6;
+  font-size: 0.85rem;
+}
+
+.alert-content h4 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.alert-content p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Sensors Section */
+.sensors-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sensor-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.sensor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.sensor-card.selected {
+  border-color: #27ae60;
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.2);
+}
+
+.sensor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.sensor-info h3 {
+  color: #2c3e50;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.sensor-info p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.sensor-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-online {
+  background-color: #27ae60;
+}
+
+.status-offline {
+  background-color: #e74c3c;
+}
+
+.status-warning {
+  background-color: #f39c12;
+}
+
+.status-unknown {
+  background-color: #95a5a6;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.sensor-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.metric:hover {
+  background: #e9ecef;
+}
+
+.metric-icon {
+  font-size: 1.2rem;
+  width: 24px;
+}
+
+.metric-icon.temperature { color: #e74c3c; }
+.metric-icon.humidity { color: #3498db; }
+.metric-icon.moisture { color: #27ae60; }
+.metric-icon.light { color: #f39c12; }
+.metric-icon.wind { color: #95a5a6; }
+
+.metric-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-value {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+}
+
+.sensor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.battery-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.battery-good { color: #27ae60; }
+.battery-medium { color: #f39c12; }
+.battery-low { color: #e74c3c; }
+
+.last-update {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.connection-online { color: #27ae60; }
+.connection-offline { color: #e74c3c; }
+
+/* Sensor Details */
+.sensor-details {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.details-header h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.close-details {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-details:hover {
+  background: #f8f9fa;
+  color: #2c3e50;
+}
+
+.details-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.detail-chart {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.detail-chart h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.chart-placeholder {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+}
+
+.detail-info h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.info-item label {
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.info-item span {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-badge.status-online {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.status-offline {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-badge.status-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .iot-monitoring {
+    padding: 1rem;
+  }
+  
+  .iot-header h1 {
+    font-size: 2rem;
+  }
+  
+  .alerts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sensors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sensor-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .details-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .sensor-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}

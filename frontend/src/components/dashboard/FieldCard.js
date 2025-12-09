@@ -1,19 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaMapMarkerAlt, FaCalendar, FaRuler } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendar, FaRuler, FaSeedling, FaAppleAlt, FaCarrot, FaLeaf, FaTree, FaTint, FaThermometerHalf, FaWind } from 'react-icons/fa';
+import { GiWheat, GiGrapes, GiOlive, GiPotato, GiOrange, GiPalmTree } from 'react-icons/gi';
 import './FieldCard.css';
 
 // Crop icon mapping
 const cropIcons = {
-  tomato: '🍅',
-  olives: '🫒',
-  wheat: '🌾',
-  potato: '🥔',
-  citrus: '🍊',
-  dates: '🌴',
-  grapes: '🍇',
-  vegetables: '🥬',
-  other: '🌱'
+  tomato: GiOrange,
+  olives: GiOlive,
+  wheat: GiWheat,
+  potato: GiPotato,
+  citrus: GiOrange,
+  dates: GiPalmTree,
+  grapes: GiGrapes,
+  vegetables: FaLeaf,
+  other: FaSeedling
 };
 
 // Status badge colors
@@ -48,10 +49,12 @@ function FieldCard({ field }) {
   const cropIcon = cropIcons[field.crop_type?.toLowerCase()] || cropIcons.other;
   const statusStyle = statusColors[field.status?.toLowerCase()] || statusColors.active;
 
+  const CropIcon = cropIcon;
+
   return (
     <div className="field-card">
       <div className="field-card-header">
-        <div className="field-crop-icon">{cropIcon}</div>
+        <div className="field-crop-icon"><CropIcon /></div>
         <div className="field-header-info">
           <h3 className="field-name">{field.name}</h3>
           <span 
@@ -85,21 +88,21 @@ function FieldCard({ field }) {
       {/* TODO: Replace with real IoT data */}
       <div className="field-sensors">
         <div className="sensor-item">
-          <span className="sensor-icon">💧</span>
+          <FaTint className="sensor-icon" />
           <div className="sensor-info">
             <span className="sensor-value">{sensorData.moisture}%</span>
             <span className="sensor-label">Moisture</span>
           </div>
         </div>
         <div className="sensor-item">
-          <span className="sensor-icon">🌡️</span>
+          <FaThermometerHalf className="sensor-icon" />
           <div className="sensor-info">
             <span className="sensor-value">{sensorData.temperature}°C</span>
             <span className="sensor-label">Temp</span>
           </div>
         </div>
         <div className="sensor-item">
-          <span className="sensor-icon">💨</span>
+          <FaWind className="sensor-icon" />
           <div className="sensor-info">
             <span className="sensor-value">{sensorData.humidity}%</span>
             <span className="sensor-label">Humidity</span>

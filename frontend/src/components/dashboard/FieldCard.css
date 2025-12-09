@@ -36,6 +36,11 @@
 .field-crop-icon {
   font-size: 48px;
   line-height: 1;
+  color: #4caf50;
+}
+
+.field-crop-icon svg {
+  filter: drop-shadow(0 2px 4px rgba(76, 175, 80, 0.3));
 }
 
 .field-header-info {
@@ -123,6 +128,19 @@
 
 .sensor-icon {
   font-size: 24px;
+}
+
+/* Individual sensor icon colors */
+.sensor-item:nth-child(1) .sensor-icon {
+  color: #2196f3;
+}
+
+.sensor-item:nth-child(2) .sensor-icon {
+  color: #ff5722;
+}
+
+.sensor-item:nth-child(3) .sensor-icon {
+  color: #9c27b0;
 }
 
 .sensor-info {

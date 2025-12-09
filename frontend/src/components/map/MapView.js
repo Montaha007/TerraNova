@@ -6,8 +6,10 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaTrash, FaVideo } from 'react-icons/fa';
 import AddFieldModal from './AddFieldModal';
 import AddCameraModal from './AddCameraModal';
+import CameraStreamModal from './CameraStreamModal';
 import MapToolbar from './MapToolbar';
 import './MapView.css';
 
@@ -94,6 +96,8 @@ function MapView() {
   const [mode, setMode] = useState('view');
   const [isFieldModalOpen, setIsFieldModalOpen] = useState(false);
   const [isCameraModalOpen, setIsCameraModalOpen] = useState(false);
+  const [isStreamModalOpen, setIsStreamModalOpen] = useState(false);
+  const [selectedCamera, setSelectedCamera] = useState(null);
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, type: '', id: null, message: '' });
   const [tempPolygon, setTempPolygon] = useState(null);
   const [tempMarker, setTempMarker] = useState(null);
@@ -465,7 +469,7 @@ function MapView() {
                           message: `Are you sure you want to delete "${field.name}"?`
                         })}
                       >
-                        ❌ Delete Field
+                        <FaTrash /> Delete Field
                       </button>
                     </div>
                   </Popup>
@@ -499,9 +503,15 @@ function MapView() {
                   <div className="map-popup">
                     <h3>{camera.name}</h3>
                     <p><strong>Status:</strong> {camera.is_active ? 'Active' : 'Inactive'}</p>
-                    {camera.stream_url && (
-                      <button className="view-stream-btn" onClick={() => window.open(camera.stream_url, '_blank')}>
-                        View Stream
+                    {camera.is_active && (
+                      <button 
+                        className="view-stream-btn live-stream-btn"
+                        onClick={() => {
+                          setSelectedCamera(camera);
+                          setIsStreamModalOpen(true);
+                        }}
+                      >
+                        <FaVideo /> Watch Live Stream
                       </button>
                     )}
                     <button 
@@ -513,7 +523,7 @@ function MapView() {
                         message: `Are you sure you want to delete "${camera.name}"?`
                       })}
                     >
-                      ❌ Delete Camera
+                      <FaTrash /> Delete Camera
                     </button>
                   </div>
                 </Popup>
@@ -603,6 +613,15 @@ function MapView() {
         onSave={handleSaveCamera}
         latitude={tempMarker?.lat || 0}
         longitude={tempMarker?.lng || 0}
+      />
+
+      <CameraStreamModal
+        isOpen={isStreamModalOpen}
+        onClose={() => {
+          setIsStreamModalOpen(false);
+          setSelectedCamera(null);
+        }}
+        camera={selectedCamera}
       />
 
       <ConfirmDialog

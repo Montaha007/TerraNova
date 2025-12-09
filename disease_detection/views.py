@@ -9,6 +9,7 @@ from rest_framework import status
 
 from .models import DiseaseDetection, TreatmentRecommendation
 from novaterra.models import Field
+from novaterra.services.sms_service import SMSService
 
 AI_SERVICE_URL = "http://localhost:5000"
 
@@ -75,20 +76,38 @@ def detect_disease(request):
         
         # Save detections to database
         saved_detections = []
+        sms_sent = False
         if detection_result.get('detected'):
             # Reset file pointer to save the image
             image_file.seek(0)
             
             for disease in detection_result.get('diseases', []):
+                severity = 'high' if disease['confidence'] > 0.8 else 'medium' if disease['confidence'] > 0.5 else 'low'
+                
                 detection = DiseaseDetection.objects.create(
                     user=request.user,
                     field=field,
                     disease_name=disease['class'],
                     confidence=disease['confidence'],
-                    severity='high' if disease['confidence'] > 0.8 else 'medium' if disease['confidence'] > 0.5 else 'low',
+                    severity=severity,
                     image=image_file,
                     bbox=disease.get('bbox')
                 )
+                
+                # Send SMS alert if phone number exists and severity is medium or higher
+                if not sms_sent and severity in ['medium', 'high', 'critical']:
+                    phone_number = request.user.profile.phone_number
+                    if phone_number:
+                        sms_service = SMSService()
+                        field_name = field.name if field else 'Your field'
+                        sms_result = sms_service.send_disease_alert(
+                            phone_number=phone_number,
+                            disease_name=detection.disease_name,
+                            field_name=field_name,
+                            severity=severity
+                        )
+                        sms_sent = sms_result.get('success', False)
+                
                 saved_detections.append({
                     'id': detection.id,
                     'disease_name': detection.disease_name,
@@ -100,7 +119,8 @@ def detect_disease(request):
             'success': True,
             'detection': detection_result,
             'saved_detections': saved_detections,
-            'total_saved': len(saved_detections)
+            'total_saved': len(saved_detections),
+            'sms_sent': sms_sent
         }, status=status.HTTP_200_OK)
         
     except requests.exceptions.RequestException as e:

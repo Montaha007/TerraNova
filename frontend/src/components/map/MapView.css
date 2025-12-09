@@ -112,7 +112,7 @@
 .view-stream-btn {
   margin-top: 0.75rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #0B1D1A 0%, #1a3a2a 100%);
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
   color: white;
   border: none;
   border-radius: 6px;
@@ -121,12 +121,20 @@
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .view-stream-btn:hover {
-  background: linear-gradient(135deg, #1a3a2a 0%, #0B1D1A 100%);
+  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(11, 29, 26, 0.3);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+.view-stream-btn:active {
+  transform: translateY(0);
 }
 
 /* Map Legend */

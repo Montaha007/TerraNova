@@ -84,14 +84,22 @@ CORS_ALLOW_ALL_ORIGINS = True  # For development
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'montaha',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Uncomment below to use PostgreSQL (make sure service is running)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'montaha',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 import os
 GDAL_LIBRARY_PATH = r"C:\Users\Mattoussi\OneDrive\Documents\Novaterra\myvenv\Lib\site-packages\osgeo\gdal.dll"
 GEOS_LIBRARY_PATH = r"C:\Users\Mattoussi\OneDrive\Documents\Novaterra\myvenv\Lib\site-packages\osgeo\geos_c.dll"
@@ -185,3 +193,13 @@ SIMPLE_JWT = {
 # OpenWeather API Configuration
 from decouple import config
 OPENWEATHER_API_KEY = config('OPENWEATHER_API_KEY', default='')
+
+# Twilio SMS Configuration (for disease detection alerts)
+# Get these from https://www.twilio.com/console
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', default='')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', default='')
+TWILIO_PHONE_NUMBER = config('TWILIO_PHONE_NUMBER', default='')  # e.g., +1234567890
+
+# Media files (uploaded images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
